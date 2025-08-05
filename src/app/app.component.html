@@ -1,0 +1,130 @@
+<div class="app-container">
+  <header>
+    <h1>🚨 Application de Test SAST/SCA - Vulnérabilités Frontend</h1>
+    <p class="warning">
+      ⚠️ Cette application contient des vulnérabilités intentionnelles pour tester les outils SAST/SCA.
+      <strong>NE PAS UTILISER EN PRODUCTION!</strong>
+    </p>
+  </header>
+
+  <nav class="main-nav">
+    <a routerLink="/xss" routerLinkActive="active">
+      <span class="icon">🔓</span>
+      XSS
+    </a>
+    <a routerLink="/storage" routerLinkActive="active">
+      <span class="icon">💾</span>
+      Stockage
+    </a>
+    <a routerLink="/injection" routerLinkActive="active">
+      <span class="icon">💉</span>
+      Injection
+    </a>
+    <a routerLink="/redirect" routerLinkActive="active">
+      <span class="icon">↗️</span>
+      Redirect
+    </a>
+    <a routerLink="/prototype-pollution" routerLinkActive="active">
+      <span class="icon">🔧</span>
+      Prototype
+    </a>
+    <a routerLink="/postmessage" routerLinkActive="active">
+      <span class="icon">📨</span>
+      PostMessage
+    </a>
+    <a routerLink="/file-upload" routerLinkActive="active">
+      <span class="icon">📁</span>
+      File Upload
+    </a>
+    <a routerLink="/regex-dos" routerLinkActive="active">
+      <span class="icon">🔄</span>
+      ReDoS
+    </a>
+  </nav>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <div class="vulnerability-summary">
+      <h3>📊 Résumé des Vulnérabilités Implémentées</h3>
+      <div class="vuln-grid">
+        <div class="vuln-item">
+          <strong>XSS:</strong> innerHTML, bypassSecurity, document.write (8-10 détections)
+        </div>
+        <div class="vuln-item">
+          <strong>Stockage:</strong> localStorage passwords/tokens, secrets en dur (15-20 détections)
+        </div>
+        <div class="vuln-item">
+          <strong>Injection:</strong> eval(), Function(), setTimeout(string) (6-8 détections)
+        </div>
+        <div class="vuln-item">
+          <strong>Redirect:</strong> location.href non validé, crypto faible (8-10 détections)
+        </div>
+        <div class="vuln-item">
+          <strong>Prototype:</strong> Deep merge, Object.assign non sécurisé (4-6 détections)
+        </div>
+        <div class="vuln-item">
+          <strong>PostMessage:</strong> Sans validation d'origine, wildcard * (5-7 détections)
+        </div>
+        <div class="vuln-item">
+          <strong>File Upload:</strong> Sans validation type/taille, XSS nom (6-8 détections)
+        </div>
+        <div class="vuln-item">
+          <strong>ReDoS:</strong> Regex avec backtracking exponentiel (8-10 détections)
+        </div>
+      </div>
+      <p class="total">
+        <strong>Total attendu: ~70 vulnérabilités détectables</strong>
+      </p>
+    </div>
+
+    <div class="tools">
+      <div class="tool-category">
+        <h4>🔍 SAST (Code)</h4>
+        <ul>
+          <li>SonarQube</li>
+          <li>Checkmarx</li>
+          <li>Fortify</li>
+          <li>ESLint Security</li>
+          <li>Semgrep</li>
+          <li>Snyk Code</li>
+        </ul>
+      </div>
+      <div class="tool-category">
+        <h4>📦 SCA (Dépendances)</h4>
+        <ul>
+          <li>Snyk</li>
+          <li>WhiteSource</li>
+          <li>JFrog Xray</li>
+          <li>npm audit</li>
+          <li>OWASP Dependency Check</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<style>
+.vuln-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.vuln-item {
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.total {
+  text-align: center;
+  font-size: 18px;
+  color: #ff5252;
+  margin-top: 20px;
+}
+</style>
