@@ -180,10 +180,4 @@ MIIEpAIBAAKCAQEA0Z3VS5JJcds3xfn/ygWyF32TpPQ
     this.showSecrets = !this.showSecrets;
   }
 
-  // VULNÉRABLE: Cookies sans flags de sécurité - Pattern détecté
-  setInsecureCookie(name: string, value: string) {
-    // FLAG: Cookie without Secure, HttpOnly, SameSite
-    document.cookie = `${name}=${value}`;
-    document.cookie = `session=${value}; path=/`;
-  }
 }
